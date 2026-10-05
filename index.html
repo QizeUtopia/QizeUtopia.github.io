@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qize Li &middot; 李其泽</title>
+<meta name="description" content="Personal homepage of Qize Li, AI Infra Engineer at Alibaba.">
+<style>
+  :root {
+    --fg: #1a1a1a;
+    --muted: #5a5a5a;
+    --link: #1558b0;
+    --rule: #e3e3e3;
+    --bg: #ffffff;
+    --avatar-size: 136px;
+    --avatar-y: 6%;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #e6e6e6;
+      --muted: #a0a0a0;
+      --link: #6fa8ff;
+      --rule: #333333;
+      --bg: #16181c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+  header { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+  .avatar-btn {
+    width: var(--avatar-size); height: var(--avatar-size);
+    padding: 0; border: 0; background: none; border-radius: 50%;
+    flex: none; cursor: zoom-in; line-height: 0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .avatar-btn:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+  .avatar-btn:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+  .avatar {
+    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+    object-position: center var(--avatar-y); background: var(--rule); display: block;
+  }
+  .lightbox {
+    position: fixed; inset: 0; z-index: 100; display: none;
+    align-items: center; justify-content: center; padding: 28px;
+    background: rgba(0, 0, 0, 0.88); cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 100%; max-height: 100%; border-radius: 10px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  }
+  .intro { flex: 1 1 320px; min-width: 260px; }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .affil { color: var(--muted); margin: 0 0 14px; }
+  .links { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 0; margin: 0; }
+  .links li { white-space: nowrap; }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { margin-top: 40px; }
+  p { margin: 0 0 14px; }
+  h2 {
+    font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); font-weight: 600;
+    margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);
+  }
+  h2:first-child { margin-top: 0; }
+  .item { margin-bottom: 18px; }
+  .item:last-child { margin-bottom: 0; }
+  .item .org { font-weight: 600; }
+  .item .role { color: var(--muted); }
+  @media (max-width: 560px) {
+    .wrap { padding: 36px 18px 60px; }
+  }
+  footer {
+    margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule);
+    color: var(--muted); font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <button class="avatar-btn" id="avatarBtn" type="button" aria-label="View full photo">
+      <img class="avatar" src="profile.jpg" alt="Qize Li">
+    </button>
+    <div class="intro">
+      <h1>Qize Li &middot; 李其泽</h1>
+      <p class="affil">AI Infra Engineer<br>Alibaba Group</p>
+      <ul class="links">
+        <li>Email: <a href="mailto:liqize.lqz@alibaba-inc.com">liqize.lqz@alibaba-inc.com</a></li>
+        <li><a href="https://github.com/QizeUtopia">GitHub</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <h2>About</h2>
+    <p>
+      I am an <strong>AI Infra Engineer</strong> at <strong>Alibaba Group</strong>.
+      I work on large-scale AI infrastructure, including model training and serving
+      systems. Feel free to reach out by email.
+    </p>
+
+    <h2>Education</h2>
+    <div class="item">
+      <span class="org">B.E., Shenyang University of Technology</span>, School of Software<br>
+      <span class="role">2018 &ndash; 2022</span>
+    </div>
+
+    <h2>Experience</h2>
+    <div class="item">
+      <span class="org">AI Infra Engineer, Alibaba Group</span><br>
+      <span class="role">2022 &ndash; Present</span>
+    </div>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Qize Li &middot; 李其泽. Hosted on GitHub Pages.
+  </footer>
+
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo">
+  <img src="profile.jpg" alt="Qize Li">
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  (function () {
+    var box = document.getElementById("lightbox");
+    document.getElementById("avatarBtn").addEventListener("click", function () {
+      box.classList.add("open");
+    });
+    box.addEventListener("click", function () { box.classList.remove("open"); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") box.classList.remove("open");
+    });
+  })();
+</script>
+</body>
+</html>
